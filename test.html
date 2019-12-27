@@ -35,8 +35,8 @@
           <tbody>
               <tr ng-repeat="news in modalCtrl.newsList" ng-strikes="" >
                   <td><input type="checkbox" class="checkbox"></td>
-                  <td>{{news.title | limitTo:25}}</td>
-                  <td>{{news.description | limitTo:50}}</td>
+                  <td>{{news.title | limitTo:25}}{{news.title.length > 25 ? '...' : ''}}</td>
+                  <td>{{news.description | limitTo:50}}{{news.description.length > 50 ? '...' : ''}}</td>
                   <td><button class="btn btn-info" ng-click="modalCtrl.open(news)">Edit</button>
                   <button class="btn btn-danger" ng-click="modalCtrl.deleteNews(news.id)" style="margin: 5;">Delete</button>
                   <button class="btn btn-info" ng-click="modalCtrl.openDetail(news)" style="margin: 5;">Detail</button></td>
