@@ -1,0 +1,44 @@
+<div class="modal-header">
+    <h3 ng-if="!ctrl.news.id && ctrl.action !== 'details'">
+        Add new News
+    </h3>
+    <h3 ng-if="ctrl.news.id && ctrl.action !== 'details'">
+        Edit News
+    </h3>
+    <h3 ng-if="ctrl.action === 'details'">
+        News Details
+    </h3>
+  </div>
+  <div class="modal-body">
+      <div ng-if="ctrl.action !== 'details'">
+        <form name="inputForm" novalidate>
+            <input type="text" name="id" ng-model="ctrl.news.id" style="display: none;">
+            <div class="form-group" >
+                <label>Title:</label>
+                <input type="text" name="title" class="form-control d-title" ng-model="ctrl.news.title" ng-change="ctrl.lengthValidation()" ng-required="true" >
+                <div ng-show="inputForm.title.$touched && inputForm.title.$invalid && !ctrl.maxLengthStatus" class="error">
+                    <span>Please enter the Title</span>
+                </div>
+                <div ng-show="inputForm.title.$touched &&  ctrl.maxLengthStatus" class="error">
+                    <span>Title exceed max 25 letters</span>
+                </div>              
+            </div> 
+            <div class="form-group">
+                <label>Description:</label>
+                <textarea name= "description" class="form-control"  ng-model="ctrl.news.description"  ng-required="true"></textarea>
+                <div ng-show="inputForm.description.$touched && inputForm.description.$invalid" class="error">
+                    <span>Please enter the Description</span>
+                </div>
+            </div>           
+            <button ng-if = "ctrl.action !== 'details'" class="btn btn-primary" ng-disabled="inputForm.$invalid || ctrl.maxLengthStatus" ng-click="ctrl.save()">Save</button>
+            <button class="btn btn-warning" ng-click="ctrl.cancel()">Cancel</button>
+        </form>
+    </div>
+    <div ng-if = "ctrl.action === 'details'">
+        <h6 class = "header-d ">Title:</h3><label class="details-d">{{ctrl.news.title}}</label>
+        <h6 class = "header-d">Descriptons:</h3><label class="details-d">{{ctrl.news.description}}</label>
+    </div>
+  </div>
+  <div class="modal-footer">
+    <button ng-if = "ctrl.action === 'details'" class="btn btn-warning" ng-click="ctrl.cancel()">Cancel</button>
+  </div>

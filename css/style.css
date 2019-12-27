@@ -1,0 +1,33 @@
+.title{
+    font-size: 30px;
+    color: white;
+    padding-left: 15%;
+    background-color: tomato;
+}
+.header{
+    font-size: 20px;
+    color: white;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    background-color: #ac2925;
+}
+
+.strikeThrough{
+    text-decoration: line-through;
+}
+
+.app-modal-window .modal-dialog {
+   
+    height: 500px !important;
+}
+.error{
+    color: red;
+}
+.header-d{
+    font-size: 20px;
+    font-weight: bold;
+}
+.details-d{
+    font-size: 15px;
+    font-weight: 100;
+}
