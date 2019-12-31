@@ -30,6 +30,7 @@ function ModalContentCtrl(CrudService,$uibModalInstance,newsData,action) {
     }else
     {
       ctrl.news.id = ''
+      ctrl.news.checkbox = false
       var apiRoute = "http://localhost:3000/app-data";
       var student = CrudService.saveNews(apiRoute,ctrl.news);
       student.then(function (response) {
@@ -63,6 +64,7 @@ function ModalContentCtrl(CrudService,$uibModalInstance,newsData,action) {
       id:newsData.id,
       title:newsData.title,
       description:newsData.description,
+      checkbox: newsData.checkbox
     }
     ctrl.action = action.actionTaken
   }
