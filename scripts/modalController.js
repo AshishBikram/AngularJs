@@ -16,11 +16,22 @@
       vm.deleteNews = deleteNews;
       vm.getEmptyNews = getEmptyNews;
       vm.openDetail = openDetail;
+      vm.updateCheckbox = updateCheckbox
 
       vm.$onInit = function() {
            vm.getData();
       };
     
+      function updateCheckbox(news){
+        var apiRoute = "http://localhost:3000/app-data";
+        var newsData = CrudService.updateNews(apiRoute+'/'+news.id,news);
+        newsData.then(function (response) {
+          console.log(response)
+        },
+          function (error) {
+            console.log("Error: " + error);
+        });
+      }
       function openDetail(news){
         var modalInstance =  $uibModal.open({
           templateUrl: "form.html",

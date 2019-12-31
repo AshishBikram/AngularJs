@@ -33,8 +33,8 @@
               </tr>
           </thead>
           <tbody>
-              <tr ng-repeat="news in modalCtrl.newsList" ng-strikes="" >
-                  <td><input type="checkbox" class="checkbox"></td>
+              <tr ng-repeat="news in modalCtrl.newsList" ng-strikes="" ng-class="{strikeThrough : news.checkbox}">
+                  <td><input type="checkbox" class="checkbox" ng-model = "news.checkbox" ng-checked="{{news.checkbox}}" ng-click="modalCtrl.updateCheckbox(news)"></td>
                   <td>{{news.title | limitTo:25}}{{news.title.length > 25 ? '...' : ''}}</td>
                   <td>{{news.description | limitTo:50}}{{news.description.length > 50 ? '...' : ''}}</td>
                   <td><button class="btn btn-info" ng-click="modalCtrl.open(news)">Edit</button>
